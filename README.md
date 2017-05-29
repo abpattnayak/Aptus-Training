@@ -1,1 +1,1 @@
-# aptusTraining
+# Aptus Training
