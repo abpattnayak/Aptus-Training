@@ -85,3 +85,7 @@
 <form action="scattered-graph.jsp" target="_blank">
 	<input type="submit" name="scattered-graph.jsp" value="Scattered Graph"></input>
 </form>
+<form action="line-graph.jsp" target="_blank">
+	<input type="submit" name="line-graph.jsp" value="Line Graph"></input>
+</form>
+

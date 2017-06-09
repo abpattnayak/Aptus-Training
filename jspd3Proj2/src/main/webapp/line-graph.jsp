@@ -24,6 +24,10 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
 var x = d3.scaleTime().range([0, width]);
 var y = d3.scaleLinear().range([height, 0]);
 
+var valueline = d3.line()
+    .x(function(d) { return x(d.id); })
+    .y(function(d) { return y(d.score); });
+
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -31,7 +35,6 @@ var svg = d3.select("body").append("svg")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-// Get the data
 d3.csv("data.csv", function(error, data) {
   if (error) throw error;
 
@@ -43,10 +46,14 @@ d3.csv("data.csv", function(error, data) {
   x.domain(d3.extent(data, function(d) { return d.id; }));
   y.domain([0, d3.max(data, function(d) { return d.score; })]);
     
+  svg.append("path")
+      .attr("class", "line")
+      .attr("d", valueline(data));
+
   svg.selectAll("dot")
       .data(data)
     .enter().append("circle")
-      .attr("r", 5)
+      .attr("r", 1)
       .attr("cx", function(d) { return x(d.id); })
       .attr("cy", function(d) { return y(d.score); });
 
