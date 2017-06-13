@@ -60,13 +60,15 @@ public class botTest {
 		query = query.toLowerCase().replaceAll("[^a-z0-9 ]", "");
 		String[] queryWords = query.split(" ");
 		i=0;
-		for(Map.Entry<Integer, List<String>> entry : hm.entrySet()){
-			Integer key = entry.getKey();
-            List<String> values = entry.getValue();
-            if(values.contains(o)){
+		for(word : queryWords){
+			for(Map.Entry<Integer, List<String>> entry : hm.entrySet()){
+				Integer key = entry.getKey();
+            			List<String> values = entry.getValue();
+            			if(values.contains(word) && !values.get(0).equals(word)){
             	
-            }
-            i++;
+            			}
+            		i++;
+			}
 		}
 		
 	}
